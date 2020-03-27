@@ -14,20 +14,14 @@
   <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/progressbar.css') }}">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="{{url_for('static', filename='main.js')}}"></script>
-  <script src="{{url_for('static', filename='particle-cfg.json')}}"></script>
-  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
-  <script>
-    /* particlesJS.load(@dom-id, @path-json, @callback (optional)); */
-    particlesJS.load('particles-js', "{{url_for('static', filename='particle-cfg.json')}}", function () {
-      console.log('callback - particles.js config loaded');
-    });
-  </script>
+
+
 </head>
 
 <body>
 
   <section class="hero is-medium">
-    <div id="particles-j" class="pzload"></div>
+    <div id="particles-j"></div>
     <div class="hero-body ">
       <div class="container has-text-centered">
         <h1 class="title"><mark class="has-background-light">
@@ -43,7 +37,7 @@
         <section class="section">
             <div class="columns is-centered ">
               <div class="column is-half">
-                <div class="card is-large">
+                <div class="card ">
                   <div class="card-content">
                     <p id="cards" class="title has-text-centered">
                       Ready?
