@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
+  <title>RAN reading fluency!</title>
+  <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/progressbar.css') }}">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="{{url_for('static', filename='main.js')}}"></script>
+  <script src="{{url_for('static', filename='particle-cfg.json')}}"></script>
+  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+  <script>
+    /* particlesJS.load(@dom-id, @path-json, @callback (optional)); */
+    particlesJS.load('particles-js', "{{url_for('static', filename='particle-cfg.json')}}", function () {
+      console.log('callback - particles.js config loaded');
+    });
+  </script>
+</head>
+
+<body>
+
+  <section class="hero is-medium">
+    <div id="particles-j" class="pzload"></div>
+    <div class="hero-body ">
+      <div class="container has-text-centered">
+        <h1 class="title"><mark class="has-background-light">
+            RAN reading fluency exersize!
+          </mark>
+        </h1>
+        <h2 class="subtitle">
+          <mark class="has-background-light">
+            Scroll down and read the instructions. Try it out! 
+          </mark>
+        </h2>
+      </div>
+        <section class="section">
+            <div class="columns is-centered ">
+              <div class="column is-half">
+                <div class="card is-large">
+                  <div class="card-content">
+                    <p id="cards" class="title has-text-centered">
+                      Ready?
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </section>
+        <div class="field is-grouped is-grouped-centered is-grouped-multiline ">
+          <p class="control"><button id ="start" onclick="test()" class="button is-primary ">Start</button></p>
+          
+          <p class="control"><button id ="pause" onclick="cancelev()" class="button is-primary ">Pause</button></p>
+         
+          <p class="control"><button id ="resume" onclick="resumev()" class="button is-primary " disabled>Reusme</button></p>
+      
+          <p class="control"><input id="seconds" class="input" type="text" placeholder="Delay per word (in seconds)"></p>
+        
+          <p class="control"><button id ="changesecods" onclick="changesecods()" class="button is-primary ">Change Delay time!</button></p>
+      
+      </div>
+        <script>
+          document.getElementById("seconds")
+                  .addEventListener("keyup", function(event) {
+                  event.preventDefault();
+                  if (event.keyCode === 13) {
+                    let zz = document.getElementById("seconds").value
+                    console.log(document.getElementById("seconds").value)
+                    if (+zz === +zz){
+                      seconds = zz*1000;
+                    }
+                  }
+              });
+              
+              document.getElementById("pause")
+                  .addEventListener("click", function() {
+                    document.getElementById("resume").disabled = false;
+                    document.getElementById("pause").disabled = true;
+              });
+              document.getElementById("start")
+                  .addEventListener("click", function() {
+                    document.getElementById("resume").disabled = true;
+                    document.getElementById("pause").disabled = false;
+              });
+              document.getElementById("resume")
+                  .addEventListener("click", function() {
+                    document.getElementById("resume").disabled = true;
+                    document.getElementById("pause").disabled = false;
+              });
+              </script>
+      </div>
+    </div>
+
+
+  </section>
+
+  <section class="section has-background-white-ter has-text-centered">
+    
+      <p class="is-size-3" id='words'>Worldlist: </p>
+    
+    <script>
+          document.getElementById("words").innerHTML += String(v);
+      </script>
+    <div class="field">
+      <div class="control is-large">
+        <textarea id="txtarea" class="textarea is-large" placeholder="Add your words here! Make sure to separate each word by commas!&#10;&#13;Ex: dog,bad,Apple"></textarea>
+      </div>
+    </div>
+
+    <button id ="addtoarr" onclick="addtoarr()" class="button is-primary">Add to word list</button>
+    <button id ="resetarr" onclick="resetarr()" class="button is-primary">Reset the list</button>
+    <div id="tst" class="container has-text-centered">Or upload your kindle highlights text file!</div>
+    <div class="field is-grouped is-grouped-centered">
+      <div class="file">
+        <form class="file" id="fileinfo" method="post" enctype="multipart/form-data"
+          onsubmit="return submitForm();">
+          <label class="file-label">
+            <input class="file-input" type="file" name="file">
+
+            <span class="file-cta">
+              <span class="file-icon">
+                <i class="fas fa-upload"></i>
+              </span>
+              <span class="file-label">
+                Choose a file…
+              </span>
+            </span>
+          </label>
+          <div class="control">
+            <button type="submit" value="Submit" class="button is-primary">Submit</button>
+          </div>
+
+        </form>
+      </div>
+      
+
+    </div>
+  </section>
+
+  <section class="section">
+
+    <p class="has-text-centered">About this site:
+      The idea of this site is to improve reading fluency by reading the presented words out loud.
+      The concept is backed by modern reading research. Here's the abstract of a <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5859220/">research paper </a>regarding this topic:
+      <blockquote cite="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5859220/" class="column has-text-centered">
+      
+        Phonological awareness (PA) and rapid automatized naming (RAN) have been shown to be powerful predictors of reading achievement across many languages. However, literature remains unclear: (a) whether RAN is independent of PA, (b) about the specific influences of PA and RAN on reading and spelling, and (c) about the efficacy of a RAN intervention. This study aims to address these issues by means of an intervention design. Precisely, the objectives are (a) to determine whether training one competence involves or not an effect on the other, (b) to examine whether each intervention based on oral abilities (PA vs. RAN) could improve word reading and word spelling performances, and (c) to assess the efficacy of a RAN-objects’ intervention. Thirty-six French-speaking second graders, from two Belgian elementary schools, were divided into two groups, and received either a PA- or a RAN-objects’ intervention. Twenty-five-minute lessons took place at school twice a week over a period of 2 months. Both groups were compared on multiple experimental measures (PA, RAN, word reading, and word spelling), before and immediately after the intervention, and 6 months later. Results showed specific efficacy of the two interventions, with participants trained in one ability outperforming those from the other group on this specific ability at post-test. Moreover, the PA intervention revealed transfer effects on the sub-lexical processes of spelling, while the RAN intervention enhanced word reading speed. Finally, the results demonstrated the efficacy of a RAN-objects’ intervention for the first time. These findings provide a new piece of evidence showing the independence of PA and RAN, each process influencing the acquisition of literacy skills in a different way. The efficacy and the specific transfer effects of both interventions open up new perspectives for prevention and targeted remediation of reading disabilities.
+      </blockquote>
+    </p>
+
+  </section>
+
+  <section class="section has-background-white-bis">
+    <p class="has-text-centered"><a href="https://github.com/arshiyasolei">@arshiyasolei</a> </p>
+  </section>
+
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/100/three.min.js"></script>
+  <script src="https://www.vantajs.com/dist/vanta.net.min.js"></script>
+  <script src="https://www.vantajs.com/dist/vanta.fog.min.js"></script>
+
+
+</body>
+
+</html>
