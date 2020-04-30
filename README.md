@@ -1,15 +1,23 @@
-# Intrinsic image popularity Assessment
+<h1 align="center">Welcome to Ranreading 👋</h1>
+<p>
+</p>
 
-A fork of "Intrinsic Image Popularity Assessment", that is converted into a flask project.
+> Ranreading's goal is to provide a tool for improving reading fluency.
 
-### Citation
+## Install
+
+```sh
+pip3 install -r requirements.txt
+python3 main.py
 ```
-@inproceedings{ding2019intrinsic,
-  title={Intrinsic Image Popularity Assessment},
-  author={Ding, Keyan and Ma, Kede and Wang, Shiqi},
-  booktitle={ACM International Conference on Multimedia},
-  pages={1979--1987},
-  year={2019},
-  publisher={ACM}
-}
-```
+
+## Author
+
+👤 **@arshiyasolei**
+
+* Github: [@arshiyasolei](https://github.com/arshiyasolei)
+
+## Show your support
+
+Give a ⭐️ if this project helped you!
+

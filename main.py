@@ -1,15 +1,20 @@
 #!/usr/bin/env python
-#assume we got data, now make rapid text things with it
+"""
+Ranreading: A project that will help you develop fluency with the words that you lookup!
+Author: @arshiyasolei
+"""
 from flask import *  
 app = Flask(__name__)  
 
 import math
 @app.route('/')  
-def upload():  
+def upload():
+    """Render home page of the website.""" 
     return render_template("index.html")  
  
 @app.route('/calculate/', methods = ['POST'])  
-def calculate():  
+def calculate():
+    """Parse the kindle file input."""  
     if request.method == 'POST':  
         f = request.files['file']
         print(f.filename)
