@@ -1,4 +1,4 @@
-<h1 align="center">Welcome to Ranreading 👋</h1>
+<h1 align="center">Welcome to Ranreading</h1>
 <p>
 </p>
 
@@ -13,7 +13,7 @@ python3 main.py
 
 ## Author
 
-👤 **@arshiyasolei**
+**@arshiyasolei**
 
 * Github: [@arshiyasolei](https://github.com/arshiyasolei)
 
