@@ -11,7 +11,7 @@ import math
 def upload():
     """Render home page of the website.""" 
     return render_template("index.html")  
- 
+#called when the user wants to input a kindle dict file
 @app.route('/calculate/', methods = ['POST'])  
 def calculate():
     """Parse the kindle file input."""  
