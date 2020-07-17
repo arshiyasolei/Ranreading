@@ -2,7 +2,7 @@
 <p>
 </p>
 
-> Ranreading's goal is to provide a tool for improving reading fluency.
+> Ran_reading's goal is to provide a tool for improving reading fluency.
 ## Screenshot
 
 <img src="screenshot.png">
